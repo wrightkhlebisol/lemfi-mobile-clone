@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import Separator from '@/components/Separator';
 
 import { FontAwesome } from '@expo/vector-icons';
@@ -14,7 +14,9 @@ export default function Help() {
           leftIcon='book'
           rightIcon='chevron-right'
           heading='Help Center'
-          lightText='Fast answers to all of the most common questions.' />
+          lightText='Fast answers to all of the most common questions.'
+          path='/help/help-center'
+        />
         
         <Separator />
         
@@ -22,28 +24,35 @@ export default function Help() {
           leftIcon='user'
           rightIcon='chevron-right'
           heading='Report general account issues'
-          lightText='Chat with our team of experts' />
+          lightText='Chat with our team of experts'
+          path='/help/report-issue'
+        />
       </View>
     </View>
   );
 }
 
 function HelpSection({
-    leftIcon, rightIcon, heading, lightText }: {
+  leftIcon, rightIcon, heading, lightText, path
+}: {
     leftIcon: IconProps<IconName>['name'],
     rightIcon: IconProps<IconName>['name'],
     heading: string,
-    lightText: string
-  }) {
+    lightText: string,
+    path: string
+  }
+) {
   return (
-    <View style={{ flexDirection: 'row', gap: 15 }}>
-      <FontAwesome name={leftIcon} size={20} color="grey" />
-      <View style={styles.content}>
-        <Text style={styles.heading3}>{heading}</Text>
-        <Text style={styles.lightText}>{lightText}</Text>
+    <Pressable onPress={() => console.log(`Routing to ${path}`)}>
+      <View style={{ flexDirection: 'row', gap: 15 }}>
+        <FontAwesome name={leftIcon} size={20} color="grey" />
+        <View style={styles.content}>
+          <Text style={styles.heading3}>{heading}</Text>
+          <Text style={styles.lightText}>{lightText}</Text>
+        </View>
+        <FontAwesome name={rightIcon} style={styles.chevron} />
       </View>
-      <FontAwesome name={rightIcon} style={styles.chevron} />
-    </View>
+    </Pressable>
   )
 }
 
