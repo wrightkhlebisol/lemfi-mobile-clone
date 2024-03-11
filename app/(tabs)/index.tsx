@@ -7,40 +7,90 @@ export default function TabOneScreen() {
     <ScrollView>
       <View style={styles.container}>
         {/* PROFILE SECTION */}
-        <View style={[styles.rowContainer, {justifyContent: 'space-between'}]}>
-          <FontAwesome name="user-circle-o" size={25} color="grey" />
-          <View style={styles.rowContainer}>
-            <FontAwesome name="gift" size={25} color="grey" />
-            <Text>Get 10.0 GBP</Text>
-            <View>
-              <FontAwesome name="bell-o" size={25} color="black" />
-            </View>
-          </View>
-        </View>
-
+        <ProfileSection/>
         {/* ACCOUNTS SECTION */}
-        <View style={[styles.rowContainer, {justifyContent: 'space-between'}]}>
-          <Text>My Accounts</Text>
-          <View style={styles.rowContainer}>
-            <Text>Hide balance
-              <FontAwesome name="eye-slash" color="black"/>
-            </Text>
-          </View>
-        </View>
+        <AccountsSection/>
         {/* BALANCE SECTION */}
-        <View style={[styles.rowContainer, {justifyContent: 'space-between'}]}>
-          <View>
-            <Text>Flag</Text>
-            <Text>NGN</Text>
-            <Text>N 0.00 </Text>
-          </View>
-          <View>
-            <FontAwesome name="plus" size={25} color="black" />
-            <Text>Tap to add account</Text>
-          </View>
-        </View>
+        <BalanceSection/>
         {/* ACTION BUTTONS */}
-        <View style={[styles.rowContainer, {justifyContent: 'space-between'}]}>
+        <ActionButtons/>
+      </View>
+      <View style={styles.secondHalf}>
+        {/* CTA */}
+        <CTA/>
+        {/* INVITE SECTION */}
+        <InviteSection/>
+        {/* RECIPIENT LIST SECTION */}
+        <RecipientListSection/>
+        {/* SERVICES SECTION */}
+        <ServicesSection/>
+        {/* ACCOUNT INFORMATION SECTION */}
+        <AccountInformationSection/>
+      </View>
+    </ScrollView>
+  );
+}
+
+function ProfileSection() {
+  return (
+    <View style={[styles.rowContainer, { justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }]}>
+      <View style={[styles.rounded, { backgroundColor: 'none', borderWidth: 2, borderColor: '#bbb', width: 45, height: 45 }]}>
+        <FontAwesome name="user-o" size={20} color="#555" />
+      </View>
+      <View style={[styles.rowContainer, {justifyContent: 'space-evenly'}]}>
+        <View style={{
+          backgroundColor: 'rgb(241 252 244)', borderRadius: 50, padding: 6, flexDirection: 'row', alignItems: 'center', gap: 2
+        }}>
+          <FontAwesome name="gift" size={22} color='rgb(0 164 95)' fontWeight='500'/>
+          <Text style={{ color: 'rgb(0 164 95)', fontWeight: 'bold', fontSize: 12 }}>Get 10.0 GBP</Text>
+        </View>
+        {/* <View> */}
+        {/* </View> */}
+      </View>
+      <FontAwesome name="bell-o" size={20} color="black" />
+    </View>
+  )
+}
+
+function AccountsSection() { 
+  return (
+    <View style={[styles.rowContainer, {justifyContent: 'space-between'}]}>
+      <Text style={{fontWeight: 'bold', fontSize: 16}} >My Accounts</Text>
+      <View style={[styles.rowContainer, {gap: 10}]}>
+        <Text style={{fontSize: 16, fontWeight: '400', color: '#555'}}>Hide balance
+          <FontAwesome name="eye-slash" size={16} color="#555" style={{paddingLeft: 5}}/>
+        </Text>
+      </View>
+    </View>
+  )
+}
+
+function BalanceSection() {
+  return (
+    <View style={[styles.rowContainer, {justifyContent: 'space-between', marginVertical: 20, gap: 20}]}>
+      <View style={{gap: 15, borderRadius: 20, padding: 20, backgroundColor: '#ddd', width: '50%' }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 7}}>
+          <View style={[styles.rounded, styles.flagStyle, {width: 30, height: 30}]}>
+            <Text>Flag</Text>
+          </View>
+          <Text style={{fontWeight: '400', fontSize: 15, color: '#666'}}>NGN</Text>
+        </View>
+        <Text style={{fontWeight: '500', fontSize: 20}}>N 0.00 </Text>
+      </View>
+
+      <View style={{ alignItems: 'center', gap: 20, borderStyle: 'dashed', borderColor: 'rgb(179 228 207)', borderWidth: 2, borderRadius: 20, padding: 20, backgroundColor: 'rgb(218, 242, 233)' }}>
+        <View style={[styles.rounded, { borderRadius: 50, borderColor: 'rgb(179 228 207)', borderWidth: 1, height: 35, width: 35,backgroundColor: "#fff" }]}>
+          <FontAwesome name="plus" size={20} color="rgb(0 164 95)" />
+        </View>
+        <Text style={{color: '#777', fontWeight: '500', fontSize: 14}}>Tap to add accou...</Text>
+      </View>
+    </View>
+  )
+}
+
+function ActionButtons() {
+  return (
+    <View style={[styles.rowContainer, { justifyContent: 'space-between' }]}>
           <View>
             <Text>Send money</Text>
           </View>
@@ -48,16 +98,22 @@ export default function TabOneScreen() {
             <Text>Add money</Text>
           </View>
             <FontAwesome name='ellipsis-h' size={25}/>
-        </View>
-      </View>
-      <View style={styles.secondHalf}>
-        {/* CTA */}
-        <View style={[styles.rowContainer, {justifyContent: 'space-between'}]}>
+  </View>
+  )
+}
+ 
+function CTA() {
+  return (
+    <View style={[styles.rowContainer, {justifyContent: 'space-between'}]}>
           <Text>Get started</Text>
           <Text>View all steps</Text>
         </View>
-        {/* INVITE SECTION */}
-        <View>
+  )
+}
+
+function InviteSection() {
+  return (
+    <View>
           <View style={[styles.rowContainer, { justifyContent: 'space-between' }]}>
             <View>
               <Text>Invite a friend and get £10.00</Text>
@@ -67,7 +123,7 @@ export default function TabOneScreen() {
               </Text>
             </View>
             <View>
-              <FontAwesome name="user-circle-o" size={25} color="black" />
+              <FontAwesome name="user-plus" size={25} color="black" />
             </View>
           </View>
           <View style={[styles.rowContainer, { justifyContent: 'space-between' }]}>
@@ -79,14 +135,18 @@ export default function TabOneScreen() {
             </View>
           </View>
         </View>
-        {/* RECIPIENT LIST SECTION */}
-        <View style={styles.marginTop}>
+  )
+}
+
+function RecipientListSection() {
+  return (
+    <View style={styles.marginTop}>
           <Text>Send To</Text>
           <View style={[styles.rowContainer, {justifyContent: 'space-between'}]}>
             <View>
               <View style={styles.rounded}>
                 <Text>COO</Text>
-                <View style={[styles.rounded, styles.flagStyle]}><Text>Flag</Text></View>
+                <View style={[styles.rounded, styles.flagStyle, { left: 20, top: 10}]}><Text>Flag</Text></View>
               </View>
               <Text>Caleb O</Text>
               <Text>kuda</Text>
@@ -103,8 +163,12 @@ export default function TabOneScreen() {
             </View>
           </View>
         </View>
-        {/* SERVICES SECTION */}
-        <View style={styles.marginTop}>
+  )
+}
+
+function ServicesSection() {
+  return (
+    <View style={styles.marginTop}>
           <Text>Services</Text>
           <View style={[styles.rowContainer, {justifyContent: 'space-between'}]}>
             <View>
@@ -124,8 +188,12 @@ export default function TabOneScreen() {
             </View>
           </View>
         </View>
-        {/* ACCOUNT INFORMATION SECTION */}
-        <View style={styles.marginTop}>
+  )
+}
+
+function AccountInformationSection() {
+  return (
+    <View style={styles.marginTop}>
           <Text>Account Information</Text>
           <View style={[styles.rowContainer, {justifyContent: 'space-between', overflow: 'scroll', columnGap: 40}]}>
             <View>
@@ -181,9 +249,7 @@ export default function TabOneScreen() {
             </View>
           </View>
         </View>
-      </View>
-    </ScrollView>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -209,8 +275,9 @@ const styles = StyleSheet.create({
     width: 20,
     height: 20,
     backgroundColor: 'green',
-    left: 20,
-    top: 10
+   
+    borderWidth: 1,
+    borderColor: 'white',
   },
   rowContainer: {
     flexDirection: 'row',
