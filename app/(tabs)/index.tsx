@@ -91,14 +91,16 @@ function BalanceSection() {
 function ActionButtons() {
   return (
     <View style={[styles.rowContainer, { justifyContent: 'space-between' }]}>
-          <View>
-            <Text>Send money</Text>
-          </View>
-          <View>
-            <Text>Add money</Text>
-          </View>
-            <FontAwesome name='ellipsis-h' size={25}/>
-  </View>
+      <View style={[styles.button, {backgroundColor: 'rgb(0, 143, 83)'}]}>
+        <Text style={{color: '#fff', fontWeight: '700'}}>Send money</Text>
+      </View>
+      <View style={styles.button}>
+        <Text style={styles.buttonColor}>Add money</Text>
+      </View>
+      <View style={styles.button}>
+        <FontAwesome name='ellipsis-h' size={25}  style={styles.buttonColor}/>
+      </View>
+    </View>
   )
 }
  
@@ -271,11 +273,24 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  button: {
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: 'rgb(5, 163, 95)',
+    padding: 10,
+    paddingHorizontal: 30,
+    backgroundColor: '#fff',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  buttonColor: {
+    color: 'rgb(0, 143, 83)',
+    fontWeight: '700'
+  },
   flagStyle: {
     width: 20,
     height: 20,
     backgroundColor: 'green',
-   
     borderWidth: 1,
     borderColor: 'white',
   },
