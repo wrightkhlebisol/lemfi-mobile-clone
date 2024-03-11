@@ -5,7 +5,7 @@ import { FontAwesome } from '@expo/vector-icons';
 export default function TabOneScreen() {
   return (
     <ScrollView>
-      <View style={styles.container}>
+      <View style={[styles.container, {backgroundColor: '#fff'}]}>
         {/* PROFILE SECTION */}
         <ProfileSection/>
         {/* ACCOUNTS SECTION */}
@@ -73,7 +73,7 @@ function BalanceSection() {
           <View style={[styles.rounded, styles.flagStyle, {width: 30, height: 30}]}>
             <Text>Flag</Text>
           </View>
-          <Text style={{fontWeight: '400', fontSize: 15, color: '#666'}}>NGN</Text>
+          <Text style={{fontWeight: '500', fontSize: 15, color: '#777'}}>NGN</Text>
         </View>
         <Text style={{fontWeight: '500', fontSize: 20}}>N 0.00 </Text>
       </View>
@@ -106,10 +106,10 @@ function ActionButtons() {
  
 function CTA() {
   return (
-    <View style={[styles.rowContainer, {justifyContent: 'space-between'}]}>
-          <Text>Get started</Text>
-          <Text>View all steps</Text>
-        </View>
+    <View style={[styles.rowContainer, {justifyContent: 'space-between', paddingBottom: 15}]}>
+      <Text style={styles.textContent}>Get started</Text>
+      <Text style={[styles.textContent, styles.buttonColor, {fontWeight: '600'}]}>View all steps</Text>
+    </View>
   )
 }
 
@@ -259,7 +259,6 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   secondHalf: {
-    backgroundColor: 'rgb(245 244 242)',
     padding: 20,
   },
   marginTop: {
@@ -299,6 +298,11 @@ const styles = StyleSheet.create({
   },
   textWidth: {
     width: 10,
+  },
+  textContent: {
+    fontSize: 13,
+    fontWeight: '500',
+    color: '#666',
   },
   separator: {
     marginVertical: 30,
