@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { FontAwesome } from '@expo/vector-icons';
 
@@ -55,7 +55,7 @@ function ProfileSection() {
 function AccountsSection() { 
   return (
     <View style={[styles.rowContainer, {justifyContent: 'space-between'}]}>
-      <Text style={{fontWeight: 'bold', fontSize: 16}} >My Accounts</Text>
+      <Text style={{fontWeight: 'bold', fontSize: 16, color: '#555'}} >My Accounts</Text>
       <View style={[styles.rowContainer, {gap: 10}]}>
         <Text style={{fontSize: 16, fontWeight: '400', color: '#555'}}>Hide balance
           <FontAwesome name="eye-slash" size={16} color="#555" style={{paddingLeft: 5}}/>
@@ -115,56 +115,69 @@ function CTA() {
 
 function InviteSection() {
   return (
-    <View>
-          <View style={[styles.rowContainer, { justifyContent: 'space-between' }]}>
-            <View>
-              <Text>Invite a friend and get £10.00</Text>
-              <Text style={{ width: 300}}>
-                They sign up and verify their identity.
-                They send up to £100.00 and you both get £10.00
-              </Text>
-            </View>
-            <View>
-              <FontAwesome name="user-plus" size={25} color="black" />
-            </View>
-          </View>
-          <View style={[styles.rowContainer, { justifyContent: 'space-between' }]}>
-            <View>
-              <Text>Invite Friends</Text>
-            </View>
-            <View>
-              <Text>Dismiss</Text>
-            </View>
-          </View>
+    <View style={styles.borderedSection}>
+      <View style={[styles.rowContainer, { justifyContent: 'space-between'}]}>
+        <View style={{width: '85%', paddingBottom: 2}}>
+          <Text style={{ fontWeight: '500', fontSize: 16, paddingBottom: 8, color: "#000" }}>Invite a friend and get £10.00</Text>
+          <Text style={{ fontSize: 16, fontWeight: '300', color: '#666', lineHeight: 20}}>
+            They sign up and verify their identity.
+            They send up to £100.00 and you both get £10.00
+          </Text>
         </View>
+        <View style={[styles.rounded, {backgroundColor: 'none', borderWidth: 3, borderColor: 'rgb(0, 143, 83)', width: 60, height: 60}]}>
+          <FontAwesome name="user-plus" size={27} color="rgb(255, 225, 115)" />
+        </View>
+      </View>
+      <View style={[styles.rowContainer, { justifyContent: 'space-between', marginTop: 10, alignItems: 'center' }]}>
+        <Pressable style={[styles.button, { borderWidth: 0, backgroundColor: 'rgb(230, 247, 238)', borderRadius: 60}]} onPress={() => console.log('Invite')}>
+          <Text style={[styles.buttonColor, { paddingVertical: 10, paddingHorizontal: 1, fontWeight: '600', fontSize: 15}]}>Invite Friends</Text>
+        </Pressable>
+        <Pressable>
+          <Text style={{color: '#555', verticalAlign: 'middle'}}>Dismiss</Text>
+        </Pressable>
+      </View>
+    </View>
   )
 }
 
 function RecipientListSection() {
   return (
     <View style={styles.marginTop}>
-          <Text>Send To</Text>
-          <View style={[styles.rowContainer, {justifyContent: 'space-between'}]}>
-            <View>
-              <View style={styles.rounded}>
-                <Text>COO</Text>
-                <View style={[styles.rounded, styles.flagStyle, { left: 20, top: 10}]}><Text>Flag</Text></View>
-              </View>
-              <Text>Caleb O</Text>
-              <Text>kuda</Text>
-            </View>
-            <View>
-              <View></View>
-              <Text>Caleb O</Text>
-              <Text>kuda</Text>
-            </View>
-            <View>
-              <View></View>
-              <Text>Caleb O</Text>
-              <Text>kuda</Text>
-            </View>
-          </View>
-        </View>
+      <Text style={styles.textContent}>Send to</Text>
+      <View style={[styles.rowContainer, {justifyContent: 'flex-start', paddingTop: 15, gap: 13, height: 135}]}>
+        <ContactCard bgColor='rgb(255, 180, 148)'/>
+        <ContactCard bgColor='rgb(171, 173, 201)'/>
+        <ContactCard bgColor='rgb(146, 219, 232)'/>
+        <ContactCard bgColor='rgb(255, 180, 148)'/>
+        <ContactCard bgColor='rgb(255, 180, 148)'/>
+      </View>
+    </View>
+  )
+}
+
+function ContactCard({bgColor}: {bgColor: string}) {
+  return (
+    <View style={{
+      backgroundColor: '#fff', borderRadius: 10, paddingHorizontal: 25, paddingTop: 12, alignItems: 'center', height: '100%'
+    }}>
+      <View style={[styles.rounded, {backgroundColor: bgColor}]}>
+        <Text>COO</Text>
+      </View>
+      <View style={[
+        styles.rounded,
+        styles.flagStyle,
+        {
+          left: 20,
+          top: -20,
+          width: 27,
+          height: 27
+        }
+      ]}>
+        <Text>Fla</Text>
+      </View>
+      <Text style={{ fontWeight: '500', fontSize: 13, top: -12 }}>Caleb O</Text>
+      <Text style={{ fontWeight: '300', fontSize: 12, top: -8 }}>Kuda</Text>
+    </View>
   )
 }
 
@@ -276,8 +289,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 1,
     borderColor: 'rgb(5, 163, 95)',
-    padding: 10,
-    paddingHorizontal: 30,
+    padding: 6,
+    paddingHorizontal: 20,
     backgroundColor: '#fff',
     justifyContent: 'center',
     alignItems: 'center',
@@ -298,6 +311,11 @@ const styles = StyleSheet.create({
   },
   textWidth: {
     width: 10,
+  },
+  borderedSection: {
+    padding: 18,
+    borderRadius: 10,
+    backgroundColor: '#fff'
   },
   textContent: {
     fontSize: 13,
