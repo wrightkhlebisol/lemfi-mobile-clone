@@ -1,6 +1,9 @@
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { FontAwesome } from '@expo/vector-icons';
+import { IconProps } from '@expo/vector-icons/build/createIconSet';
+
+type IconName = keyof typeof FontAwesome.glyphMap;
 
 export default function TabOneScreen() {
   return (
@@ -124,13 +127,13 @@ function InviteSection() {
             They send up to £100.00 and you both get £10.00
           </Text>
         </View>
-        <View style={[styles.rounded, {backgroundColor: 'none', borderWidth: 3, borderColor: 'rgb(0, 143, 83)', width: 60, height: 60}]}>
+        <View style={[styles.rounded, {backgroundColor: 'none', borderWidth: 4, borderColor: 'rgb(0, 143, 83)', width: 60, height: 60}]}>
           <FontAwesome name="user-plus" size={27} color="rgb(255, 225, 115)" />
         </View>
       </View>
       <View style={[styles.rowContainer, { justifyContent: 'space-between', marginTop: 10, alignItems: 'center' }]}>
         <Pressable style={[styles.button, { borderWidth: 0, backgroundColor: 'rgb(230, 247, 238)', borderRadius: 60}]} onPress={() => console.log('Invite')}>
-          <Text style={[styles.buttonColor, { paddingVertical: 10, paddingHorizontal: 1, fontWeight: '600', fontSize: 15}]}>Invite Friends</Text>
+          <Text style={[styles.buttonColor, { paddingVertical: 10, paddingHorizontal: 1, fontWeight: '600', fontSize: 15}]}>Invite friends</Text>
         </Pressable>
         <Pressable>
           <Text style={{color: '#555', verticalAlign: 'middle'}}>Dismiss</Text>
@@ -158,7 +161,12 @@ function RecipientListSection() {
 function ContactCard({bgColor}: {bgColor: string}) {
   return (
     <View style={{
-      backgroundColor: '#fff', borderRadius: 10, paddingHorizontal: 25, paddingTop: 12, alignItems: 'center', height: '100%'
+      backgroundColor: '#fff',
+      borderRadius: 10,
+      paddingHorizontal: 25,
+      paddingTop: 12,
+      alignItems: 'center',
+      height: '100%'
     }}>
       <View style={[styles.rounded, {backgroundColor: bgColor}]}>
         <Text>COO</Text>
@@ -183,26 +191,30 @@ function ContactCard({bgColor}: {bgColor: string}) {
 
 function ServicesSection() {
   return (
-    <View style={styles.marginTop}>
-          <Text>Services</Text>
-          <View style={[styles.rowContainer, {justifyContent: 'space-between'}]}>
-            <View>
-              <View></View>
-              <Text>Caleb O</Text>
-              <Text>kuda</Text>
-            </View>
-            <View>
-              <View></View>
-              <Text>Caleb O</Text>
-              <Text>kuda</Text>
-            </View>
-            <View>
-              <View></View>
-              <Text>Caleb O</Text>
-              <Text>kuda</Text>
-            </View>
+    <View style={[styles.marginTop]}>
+          <Text style={styles.textContent}>Services</Text>
+          <View style={[styles.rowContainer, {justifyContent: 'flex-start', paddingTop: 15, gap: 29}]}>
+            <ServiceList bgColor='rgb(198, 247, 222)' bodyText='Send to bank' fontAwesomeIcon='user-o'/>
+            <ServiceList bgColor='rgb(255, 219, 246)' bodyText='Send to MoMo' fontAwesomeIcon='hand-pointer-o'/>
+            <ServiceList bgColor='rgb(248, 227, 255)' bodyText='Request money' fontAwesomeIcon='money'/>
+            <ServiceList bgColor='rgb(252, 246, 235)' bodyText='Convert currency' fontAwesomeIcon='arrows-v'/>
           </View>
         </View>
+  )
+}
+
+function ServiceList({ bgColor, bodyText, fontAwesomeIcon }: { bgColor: string, bodyText: string, fontAwesomeIcon?: IconProps<IconName>['name']}) {
+  return (
+    <View style={{
+      alignItems: 'center',
+      height: '100%',
+      width: 70,
+    }}>
+      <View style={[styles.rounded, {backgroundColor: bgColor, width: 65, height: 65, borderWidth: 2, borderColor: '#ddd'}]}>
+        <FontAwesome name={fontAwesomeIcon} size={25} color="#555" />
+      </View>
+      <Text style={{ fontSize: 14, fontWeight: '500', textAlign: 'center', color: '#555' }}>{bodyText}</Text>
+    </View>
   )
 }
 
@@ -275,7 +287,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   marginTop: {
-    marginTop: 20,
+    marginTop: 30,
   },
   rounded: {
     borderRadius: 50,
