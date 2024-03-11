@@ -79,7 +79,7 @@ export default function Transaction() {
                   <View
                     style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                     {/* rgb(255 76 73), rgb(245 223 223) -> red*/}
-                    <View style={[{ backgroundColor: 'rgb(241 252 244)', borderRadius: 3, padding: 3}]}>
+                    <View style={{ backgroundColor: 'rgb(241 252 244)', borderRadius: 3, padding: 3}}>
                       <Text style={{ color: "rgb(49 177 115)", fontSize: 14}}>{item.status}</Text>
                     </View>
                     <Text style={{ color: '#999' }}>{item.amount_ngn} NGN</Text>
