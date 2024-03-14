@@ -70,24 +70,32 @@ function AccountsSection() {
 
 function BalanceSection() {
   return (
-    <View style={[styles.rowContainer, {justifyContent: 'space-between', marginVertical: 20, gap: 20}]}>
-      <View style={{gap: 15, borderRadius: 20, padding: 20, backgroundColor: '#ddd', width: '50%' }}>
+    <ScrollView horizontal showsHorizontalScrollIndicator={false} style={[{ marginVertical: 20 }]}>
+      
+      <View style={{gap: 15, borderRadius: 20, padding: 15, backgroundColor: 'rgb(245, 244, 242)', width: 190, marginRight: 15 }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 7}}>
-          <View style={[styles.rounded, styles.flagStyle, {width: 30, height: 30}]}>
-            <Text>Flag</Text>
-          </View>
+          <Flag width={35} height={35} borderWidth={2}/>
+          <Text style={{fontWeight: '500', fontSize: 15, color: '#777'}}>GBP</Text>
+        </View>
+        <Text style={{fontWeight: '500', fontSize: 20}}>N 0.00 </Text>
+      </View>
+
+      <View style={{gap: 15, borderRadius: 20, padding: 15, backgroundColor: 'rgb(245, 244, 242)', width: 190, marginRight: 15 }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 7}}>
+          <Flag width={35} height={35} borderWidth={2}/>
           <Text style={{fontWeight: '500', fontSize: 15, color: '#777'}}>NGN</Text>
         </View>
         <Text style={{fontWeight: '500', fontSize: 20}}>N 0.00 </Text>
       </View>
 
-      <View style={{ alignItems: 'center', gap: 20, borderStyle: 'dashed', borderColor: 'rgb(179 228 207)', borderWidth: 2, borderRadius: 20, padding: 20, backgroundColor: 'rgb(218, 242, 233)' }}>
+      <View style={{ alignItems: 'center', gap: 20, borderStyle: 'dashed', borderColor: 'rgb(179 228 207)', borderWidth: 3, borderRadius: 20, padding: 15, backgroundColor: 'rgb(218, 242, 233)'}}>
         <View style={[styles.rounded, { borderRadius: 50, borderColor: 'rgb(179 228 207)', borderWidth: 1, height: 35, width: 35,backgroundColor: "#fff" }]}>
           <FontAwesome name="plus" size={20} color="rgb(0 164 95)" />
         </View>
-        <Text style={{color: '#777', fontWeight: '500', fontSize: 14}}>Tap to add accou...</Text>
+        <Text style={{color: '#777', fontWeight: '500', fontSize: 14}}>Tap to add account</Text>
       </View>
-    </View>
+
+    </ScrollView>
   )
 }
 
@@ -119,8 +127,8 @@ function CTA() {
 function InviteSection() {
   return (
     <View style={styles.borderedSection}>
-      <View style={[styles.rowContainer, { justifyContent: 'space-between'}]}>
-        <View style={{width: '85%', paddingBottom: 2}}>
+      <View style={[styles.rowContainer, { justifyContent: 'space-between', gap: 20}]}>
+        <View style={{width: '80%', paddingBottom: 2}}>
           <Text style={{ fontWeight: '500', fontSize: 16, paddingBottom: 8, color: "#000" }}>Invite a friend and get £10.00</Text>
           <Text style={{ fontSize: 16, fontWeight: '300', color: '#666', lineHeight: 20}}>
             They sign up and verify their identity.
@@ -147,27 +155,20 @@ function RecipientListSection() {
   return (
     <View style={styles.marginTop}>
       <Text style={styles.textContent}>Send to</Text>
-      <View style={[styles.rowContainer, {justifyContent: 'flex-start', paddingTop: 15, gap: 13, height: 135}]}>
+      <ScrollView showsHorizontalScrollIndicator={false} horizontal style={[{paddingTop: 15, gap: 13, height: 135}]}>
         <ContactCard bgColor='rgb(255, 180, 148)'/>
         <ContactCard bgColor='rgb(171, 173, 201)'/>
         <ContactCard bgColor='rgb(146, 219, 232)'/>
         <ContactCard bgColor='rgb(255, 180, 148)'/>
         <ContactCard bgColor='rgb(255, 180, 148)'/>
-      </View>
+      </ScrollView>
     </View>
   )
 }
 
 function ContactCard({bgColor}: {bgColor: string}) {
   return (
-    <View style={{
-      backgroundColor: '#fff',
-      borderRadius: 10,
-      paddingHorizontal: 25,
-      paddingTop: 12,
-      alignItems: 'center',
-      height: '100%'
-    }}>
+    <View style={styles.contactCard}>
       <View style={[styles.rounded, {backgroundColor: bgColor}]}>
         <Text>COO</Text>
       </View>
@@ -183,7 +184,7 @@ function ContactCard({bgColor}: {bgColor: string}) {
       ]}>
         <Text>Fla</Text>
       </View>
-      <Text style={{ fontWeight: '500', fontSize: 13, top: -12 }}>Caleb O</Text>
+      <Text style={{ fontWeight: '500', fontSize: 12, top: -12 }}>Caleb O</Text>
       <Text style={{ fontWeight: '300', fontSize: 12, top: -8 }}>Kuda</Text>
     </View>
   )
@@ -192,25 +193,27 @@ function ContactCard({bgColor}: {bgColor: string}) {
 function ServicesSection() {
   return (
     <View style={[styles.marginTop]}>
-          <Text style={styles.textContent}>Services</Text>
-          <View style={[styles.rowContainer, {justifyContent: 'flex-start', paddingTop: 15, gap: 29}]}>
-            <ServiceList bgColor='rgb(198, 247, 222)' bodyText='Send to bank' fontAwesomeIcon='user-o'/>
-            <ServiceList bgColor='rgb(255, 219, 246)' bodyText='Send to MoMo' fontAwesomeIcon='hand-pointer-o'/>
-            <ServiceList bgColor='rgb(248, 227, 255)' bodyText='Request money' fontAwesomeIcon='money'/>
-            <ServiceList bgColor='rgb(252, 246, 235)' bodyText='Convert currency' fontAwesomeIcon='arrows-v'/>
-          </View>
-        </View>
+      <Text style={styles.textContent}>Services</Text>
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        style={[{
+          marginTop: 15, padding: 10, //gap: 29
+        }]}
+      >
+        <ServiceList bgColor='rgb(198, 247, 222)' bodyText='Send to bank' fontAwesomeIcon='user-o'/>
+        <ServiceList bgColor='rgb(255, 219, 246)' bodyText='Send to MoMo' fontAwesomeIcon='hand-pointer-o'/>
+        <ServiceList bgColor='rgb(248, 227, 255)' bodyText='Request money' fontAwesomeIcon='money'/>
+        <ServiceList bgColor='rgb(252, 246, 235)' bodyText='Convert currency' fontAwesomeIcon='arrows-v'/>
+      </ScrollView>
+    </View>
   )
 }
 
 function ServiceList({ bgColor, bodyText, fontAwesomeIcon }: { bgColor: string, bodyText: string, fontAwesomeIcon?: IconProps<IconName>['name']}) {
   return (
-    <View style={{
-      alignItems: 'center',
-      height: '100%',
-      width: 70,
-    }}>
-      <View style={[styles.rounded, {backgroundColor: bgColor, width: 65, height: 65, borderWidth: 2, borderColor: '#ddd'}]}>
+    <View style={styles.serviceList}>
+      <View style={[styles.rounded, {backgroundColor: bgColor, width: 60, height: 60, borderWidth: 2, borderColor: '#ddd'}]}>
         <FontAwesome name={fontAwesomeIcon} size={25} color="#555" />
       </View>
       <Text style={{ fontSize: 14, fontWeight: '500', textAlign: 'center', color: '#555' }}>{bodyText}</Text>
@@ -221,61 +224,49 @@ function ServiceList({ bgColor, bodyText, fontAwesomeIcon }: { bgColor: string, 
 function AccountInformationSection() {
   return (
     <View style={styles.marginTop}>
-          <Text>Account Information</Text>
-          <View style={[styles.rowContainer, {justifyContent: 'space-between', overflow: 'scroll', columnGap: 40}]}>
-            <View>
-              <View>
-                <Text>COO</Text>
-              </View>
-              <Text>Caleb O</Text>
-              <Text>kuda</Text>
-            </View>
-            <View>
-              <View></View>
-              <Text>Caleb O</Text>
-              <Text>kuda</Text>
-            </View>
-            <View>
-              <View></View>
-              <Text>Caleb O</Text>
-              <Text>kuda</Text>
-            </View>
-            <View>
-              <View>
-                <Text>COO</Text>
-              </View>
-              <Text>Caleb O</Text>
-              <Text>kuda</Text>
-            </View>
-            <View>
-              <View></View>
-              <Text>Caleb O</Text>
-              <Text>kuda</Text>
-            </View>
-            <View>
-              <View></View>
-              <Text>Caleb O</Text>
-              <Text>kuda</Text>
-            </View>
-            <View>
-              <View>
-                <Text>COO</Text>
-              </View>
-              <Text>Caleb O</Text>
-              <Text>kuda</Text>
-            </View>
-            <View>
-              <View></View>
-              <Text>Caleb O</Text>
-              <Text>kuda</Text>
-            </View>
-            <View>
-              <View></View>
-              <Text>Caleb O</Text>
-              <Text>kuda</Text>
-            </View>
+      <Text style={styles.textContent}>Account Information</Text>
+      <ScrollView  horizontal showsHorizontalScrollIndicator={false}>
+        <View style={[styles.rowContainer, {justifyContent: 'flex-start', borderWidth: 1, borderColor: '#000', borderRadius: 10, padding: 20, marginTop: 20, marginRight: 23, flexDirection: 'column', backgroundColor: 'rgb(255, 249, 237)'}]}>
+          <View style={{flexDirection: 'row'}}>
+            <Text style={{ fontSize: 25 }}>1 GBP = 2,032.00 NGN</Text>
+            <Flag width={30} height={30} borderWidth={2}/>
+            <Flag width={30} height={30} borderWidth={2} style={{right: 9}}/>
+          </View>
+
+          <Text style={{fontSize: 17, fontWeight: '300'}}>Exchange rate</Text>
+          <View style={{flexDirection: 'row', alignItems: 'center', gap: 10, marginTop: 15}}>
+            <Text style={[styles.buttonColor, {fontSize: 16, fontWeight: '400'}]}>View rates</Text>
+            <FontAwesome name="chevron-right"  style={[styles.buttonColor, {fontSize: 16, fontWeight: '400'}]} />
           </View>
         </View>
+
+        <View style={[styles.rowContainer, {justifyContent: 'flex-start', gap: 5, borderWidth: 1, borderColor: '#000', maxWidth: '100%', borderRadius: 10, padding: 20, marginTop: 20, flexDirection: 'column', backgroundColor: 'rgb(255, 249, 237)'}]}>
+            <View style={{flexDirection: 'row'}}>
+              <Text style={{ fontSize: 25 }}>1 GBP = 2,032.00 NGN</Text>
+              <View style={[styles.rounded, styles.flagStyle, {width: 30, height: 30, borderWidth: 2}]}>
+                <Text></Text>
+              </View>
+              <View style={[styles.rounded, styles.flagStyle, {width: 30, height: 30, borderWidth: 2, right: 9}]}>
+                <Text></Text>
+              </View>
+            </View>
+
+            <Text style={{fontSize: 17, fontWeight: '300'}}>Exchange rate</Text>
+            <View style={{flexDirection: 'row', alignItems: 'center', gap: 10, marginTop: 15}}>
+              <Text style={[styles.buttonColor, {fontSize: 16, fontWeight: '400'}]}>View rates</Text>
+              <FontAwesome name="chevron-right"  style={[styles.buttonColor, {fontSize: 16, fontWeight: '400'}]} />
+            </View>
+        </View>
+      </ScrollView>
+    </View>
+  )
+}
+
+function Flag({ style, width, height, borderWidth }: { style?: any, width?: number, height?: number, borderWidth?: number}) {
+  return (
+    <View style={[styles.rounded, styles.flagStyle, style, {width, height, borderWidth}]}>
+      <Text>F</Text>
+    </View>
   )
 }
 
@@ -330,9 +321,25 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff'
   },
   textContent: {
-    fontSize: 13,
-    fontWeight: '500',
+    fontSize: 14,
+    fontWeight: '400',
     color: '#666',
+
+  },
+  contactCard: {
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    paddingHorizontal: 30,
+    paddingTop: 12,
+    alignItems: 'center',
+    height: '100%',
+    marginRight: 15,
+  },
+  serviceList: {
+    alignItems: 'center',
+    // height: '80%',
+    width: 55,
+    marginRight: 30,
   },
   separator: {
     marginVertical: 30,
