@@ -225,24 +225,24 @@ function AccountInformationSection() {
   return (
     <View style={styles.marginTop}>
       <Text style={styles.textContent}>Account Information</Text>
-      <ScrollView  horizontal showsHorizontalScrollIndicator={false}>
-        <View style={[styles.rowContainer, {justifyContent: 'flex-start', borderWidth: 1, borderColor: '#000', borderRadius: 10, padding: 20, marginTop: 20, marginRight: 23, flexDirection: 'column', backgroundColor: 'rgb(255, 249, 237)'}]}>
+      <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{height: 120}}>
+        <View style={[styles.rowContainer, {justifyContent: 'flex-start', borderWidth: 1, borderColor: '#000', borderRadius: 10, padding: 10, marginTop: 20, marginRight: 23, flexDirection: 'column', backgroundColor: 'rgb(255, 249, 237)'}]}>
           <View style={{flexDirection: 'row'}}>
-            <Text style={{ fontSize: 25 }}>1 GBP = 2,032.00 NGN</Text>
+            <Text style={{ fontSize: 25, fontWeight: '600' }}>1 GBP = 2,032.00 NGN</Text>
             <Flag width={30} height={30} borderWidth={2}/>
             <Flag width={30} height={30} borderWidth={2} style={{right: 9}}/>
           </View>
 
-          <Text style={{fontSize: 17, fontWeight: '300'}}>Exchange rate</Text>
+          <Text style={{fontSize: 17, fontWeight: '400'}}>Exchange rate</Text>
           <View style={{flexDirection: 'row', alignItems: 'center', gap: 10, marginTop: 15}}>
-            <Text style={[styles.buttonColor, {fontSize: 16, fontWeight: '400'}]}>View rates</Text>
+            <Text style={[styles.buttonColor, {fontSize: 16, fontWeight: '500'}]}>View rates</Text>
             <FontAwesome name="chevron-right"  style={[styles.buttonColor, {fontSize: 16, fontWeight: '400'}]} />
           </View>
         </View>
 
-        <View style={[styles.rowContainer, {justifyContent: 'flex-start', gap: 5, borderWidth: 1, borderColor: '#000', maxWidth: '100%', borderRadius: 10, padding: 20, marginTop: 20, flexDirection: 'column', backgroundColor: 'rgb(255, 249, 237)'}]}>
+        <View style={[styles.rowContainer, {justifyContent: 'flex-start', borderWidth: 1, borderColor: '#000', borderRadius: 10, padding: 10, marginTop: 20, flexDirection: 'column', backgroundColor: 'rgb(255, 249, 237)'}]}>
             <View style={{flexDirection: 'row'}}>
-              <Text style={{ fontSize: 25 }}>1 GBP = 2,032.00 NGN</Text>
+              <Text style={{ fontSize: 25, fontWeight: '600' }}>1 GBP = 2,032.00 NGN</Text>
               <View style={[styles.rounded, styles.flagStyle, {width: 30, height: 30, borderWidth: 2}]}>
                 <Text></Text>
               </View>
@@ -251,9 +251,9 @@ function AccountInformationSection() {
               </View>
             </View>
 
-            <Text style={{fontSize: 17, fontWeight: '300'}}>Exchange rate</Text>
+            <Text style={{fontSize: 17, fontWeight: '400'}}>Exchange rate</Text>
             <View style={{flexDirection: 'row', alignItems: 'center', gap: 10, marginTop: 15}}>
-              <Text style={[styles.buttonColor, {fontSize: 16, fontWeight: '400'}]}>View rates</Text>
+              <Text style={[styles.buttonColor, {fontSize: 16, fontWeight: '500'}]}>View rates</Text>
               <FontAwesome name="chevron-right"  style={[styles.buttonColor, {fontSize: 16, fontWeight: '400'}]} />
             </View>
         </View>
